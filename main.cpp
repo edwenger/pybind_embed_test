@@ -1,8 +1,11 @@
-#include <pybind11/embed.h> // everything needed for embedding
+#include <pybind11/embed.h>
 namespace py = pybind11;
+using namespace py::literals;
 
 int main() {
-    py::scoped_interpreter guard{}; // start the interpreter and keep it alive
+    py::scoped_interpreter guard{};
 
-    py::print("Hello, World!"); // use the Python API
+    auto kwargs = py::dict("name"_a="World", "number"_a=42);
+    auto message = "Hello, {name}! The answer is {number}"_s.format(**kwargs);
+    py::print(message);
 }
