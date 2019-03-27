@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
-project(example)
+project(emodRun)
 
 add_subdirectory(pybind11)
 
-add_executable(example main.cpp)
-target_link_libraries(example PRIVATE pybind11::embed)
+enable_testing()
+add_subdirectory(tests)
+
+add_executable(emodRun main.cpp)
+target_link_libraries(emodRun PRIVATE pybind11::embed)

@@ -1,0 +1,2 @@
+add_executable(test_model_component test_model_component.cpp)
+add_test(model_component test_model_component)
