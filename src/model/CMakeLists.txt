@@ -1,0 +1,1 @@
+add_library(model SimpleBoostDecayComponent.cpp SimpleBoostDecayComponent.h)

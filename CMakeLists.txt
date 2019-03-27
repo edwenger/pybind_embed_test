@@ -1,10 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
-project(emodRun)
+project(emodRun VERSION 0.1 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(pybind11)
 
 enable_testing()
 add_subdirectory(tests)
 
+add_subdirectory(src/model)
+
 add_executable(emodRun main.cpp)
-target_link_libraries(emodRun PRIVATE pybind11::embed)
+target_link_libraries(emodRun PRIVATE pybind11::embed model)
