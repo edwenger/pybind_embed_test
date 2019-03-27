@@ -1,10 +1,14 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
-#include "Factory.h"
+#include <pybind11/embed.h>
+#include "core/Factory.h"
 
-struct ModelComponent : Factory<ModelComponent, float> // float is placeholder for py::dict
+namespace py = pybind11;
+
+struct ModelComponent : Factory<ModelComponent, std::vector<int> /*py::dict*/>
 {
     ModelComponent(Key) {}
 

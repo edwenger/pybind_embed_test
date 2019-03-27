@@ -1,14 +1,17 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
-#include "ModelComponent.h"
+#include <pybind11/embed.h>
+#include "model/ModelComponent.h"
+
+namespace py = pybind11;
 
 class SimpleBoostDecayComponent : public ModelComponent::Registrar<SimpleBoostDecayComponent>
 {
 public:
-    // SimpleBoostDecayComponent(float boostAmount_, float decayRate_);
-    SimpleBoostDecayComponent(float x); // float is placeholder for py::dict
+    SimpleBoostDecayComponent(std::vector<int> /*py::dict*/ params);
     void Update(float dt) override;
     void Notify(const std::string& event) override;
     float GetCurrentValue() const override;

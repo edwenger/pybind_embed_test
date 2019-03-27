@@ -1,19 +1,14 @@
+#include "model/SimpleBoostDecayComponent.h"
+
 #include <cmath>
 #include <stdexcept>
 
-#include "SimpleBoostDecayComponent.h"
+#include <pybind11/embed.h>
 
-// SimpleBoostDecayComponent::SimpleBoostDecayComponent(
-//     float boostAmount_, float decayRate_)
-//     : currentValue(0)
-//     , boostAmount(boostAmount_)
-//     , decayRate(decayRate_)
-// {
-// }
+namespace py = pybind11;
 
-// float is placeholder for py::dict
-SimpleBoostDecayComponent::SimpleBoostDecayComponent(float x)
-    : currentValue(x)
+SimpleBoostDecayComponent::SimpleBoostDecayComponent(std::vector<int>/*py::dict*/ params)
+    : currentValue(0)
     , boostAmount(10)
     , decayRate(0.1)
 {
