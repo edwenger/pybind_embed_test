@@ -12,5 +12,7 @@ add_subdirectory(pybind11)
 enable_testing()
 add_subdirectory(tests)
 
+add_library(model SHARED model/SimpleBoostDecayComponent.cpp)
+
 add_executable(emodRun main.cpp)
-target_link_libraries(emodRun PRIVATE pybind11::embed)
+target_link_libraries(emodRun PRIVATE pybind11::embed model)
