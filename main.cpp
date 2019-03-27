@@ -1,6 +1,9 @@
 #include <iostream>
+
 #include <pybind11/embed.h>
-#include "src/model/SimpleBoostDecayComponent.h"
+
+#include "ModelComponent.h"
+#include "SimpleBoostDecayComponent.h"
 
 namespace py = pybind11;
 using namespace py::literals;
@@ -14,9 +17,9 @@ int main() {
 
     std::cout << "c2 count: " << c2_count << std::endl;
 
-    SimpleBoostDecayComponent *mc = new SimpleBoostDecayComponent(10, 0.1);
-    mc->Notify("Boost");
+    auto mc = ModelComponent::make("SimpleBoostDecayComponent", 0.0f);
+    // mc->Notify("Boost");
     std::cout << "Value after Boost() = " << mc->GetCurrentValue() << std::endl;
-    mc->Update(5);
-    std::cout << "Value after Decay(5) = " << mc->GetCurrentValue() << std::endl;
+    // mc->Update(5);
+    // std::cout << "Value after Decay(5) = " << mc->GetCurrentValue() << std::endl;
 }
