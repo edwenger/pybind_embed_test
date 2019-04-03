@@ -1,4 +1,4 @@
-#include "model/SimpleBoostDecayComponent.h"
+#include "SimpleBoostDecayComponent.h"
 
 #include <cmath>
 #include <stdexcept>
@@ -7,10 +7,10 @@
 
 namespace py = pybind11;
 
-SimpleBoostDecayComponent::SimpleBoostDecayComponent(std::vector<int>/*py::dict*/ params)
+SimpleBoostDecayComponent::SimpleBoostDecayComponent(const py::dict &params)
     : currentValue(0)
-    , boostAmount(10)
-    , decayRate(0.1)
+    , boostAmount(params["boostAmount"].cast<float>())
+    , decayRate(params["decayRate"].cast<float>())
 {
 
 }

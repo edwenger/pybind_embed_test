@@ -4,14 +4,15 @@
 #include <vector>
 
 #include <pybind11/embed.h>
-#include "model/ModelComponent.h"
+#include "ModelComponent.h"
 
 namespace py = pybind11;
 
-class SimpleBoostDecayComponent : public ModelComponent::Registrar<SimpleBoostDecayComponent>
+class SimpleBoostDecayComponent : public ModelComponent
 {
 public:
-    SimpleBoostDecayComponent(std::vector<int> /*py::dict*/ params);
+    SimpleBoostDecayComponent(const py::dict &params);
+    
     void Update(float dt) override;
     void Notify(const std::string& event) override;
     float GetCurrentValue() const override;

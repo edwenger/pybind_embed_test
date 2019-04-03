@@ -9,9 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(pybind11)
 
-enable_testing()
-add_subdirectory(tests)
-
 add_subdirectory(model)
 
 add_executable(emodRun main.cpp)

@@ -1,4 +1,4 @@
-add_library(model SHARED SimpleBoostDecayComponent.cpp)
+add_library(model STATIC ModelComponent.cpp SimpleBoostDecayComponent.cpp)
 
 # include top-level directory to allow full include paths
 target_include_directories(model PUBLIC ${CMAKE_SOURCE_DIR})
