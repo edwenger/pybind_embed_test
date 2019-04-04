@@ -8,7 +8,8 @@ import dtk3
 
 def test_factory():
     print('Testing ModelComponentFactory...')
-    mc = dtk3.ModelComponent("SimpleBoostDecayComponent", dict(boostAmount=2.7, decayRate=0.2))
+    mc_params = dict(boostAmount=2.7, decayRate=0.2)
+    mc = dtk3.CreateComponent("SimpleBoostDecayComponent", mc_params)
     mc.Notify("Boost")
     print('value=%0.2f after Boost(2.7)' % mc.currentValue)
     mc.Update(dt=5)

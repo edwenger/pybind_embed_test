@@ -22,7 +22,8 @@ Testing exported Python objects (test/test_bindings.py):
 ```
 import dtk3
 
-mc = dtk3.ModelComponent("SimpleBoostDecayComponent", dict(bboostAmount=2.7, decayRate=0.2))
+mc_params = dict(boostAmount=2.7, decayRate=0.2)
+mc = dtk3.CreateComponent("SimpleBoostDecayComponent", mc_params)
 mc.Notify("Boost")
 mc.Update(dt=5.0)
 
