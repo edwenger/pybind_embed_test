@@ -16,7 +16,7 @@ public:
     SimpleBoostDecayComponent();
 
     void Configure(const ParamSet& ps) override;
-    void Update(float dt) override;
+    void Update(float dt=1.0f) override;
     void Notify(const std::string& event) override;
     float GetCurrentValue() const override;
 
