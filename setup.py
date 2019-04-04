@@ -61,7 +61,7 @@ setup(
     version='0.0.1',
     author='Edward Wenger',
     author_email='ewenger@idmod.org',
-    description='A test project for flexible model configuration',
+    description='A test project using pybind11 for flexible modular configuration',
     long_description='',
     ext_modules=[CMakeExtension('dtk3')],
     cmdclass=dict(build_ext=CMakeBuild),
