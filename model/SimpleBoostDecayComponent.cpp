@@ -15,10 +15,10 @@ SimpleBoostDecayComponent::SimpleBoostDecayComponent()
 
 }
 
-void SimpleBoostDecayComponent::Configure(const ParamSet& ps)
+void SimpleBoostDecayComponent::Configure(const ParamSet& pset)
 {
-    boostAmount = ps["boostAmount"].cast<float>();
-    decayRate = ps["decayRate"].cast<float>();
+    boostAmount = pset["boostAmount"].cast<float>();
+    decayRate = pset["decayRate"].cast<float>();
 }
 
 void SimpleBoostDecayComponent::Update(float dt)

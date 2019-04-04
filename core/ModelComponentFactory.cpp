@@ -4,7 +4,7 @@
 
 
 ModelComponent*
-ModelComponentFactory::CreateComponent(std::string name, const ParamSet& ps)
+ModelComponentFactory::CreateComponent(std::string name, const ParamSet& pset)
 {
   registration_table_t::iterator it;
   it = GetRegistrationTable().find(name);
@@ -12,7 +12,7 @@ ModelComponentFactory::CreateComponent(std::string name, const ParamSet& ps)
   if (it != GetRegistrationTable().end())
   {
       ModelComponent* obj = (it->second)();
-      obj->Configure(ps);
+      obj->Configure(pset);
       return obj;
   }
   else

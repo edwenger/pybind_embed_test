@@ -14,6 +14,11 @@ PYBIND11_MODULE(dtk3, m) {
 
     py::class_<SimpleBoostDecayComponent>(m, "SimpleBoostDecayComponent")
             .def(py::init<>())
+            .def("Configure",
+                 &SimpleBoostDecayComponent::Configure,
+                 "Configure the component from a ParamSet dictionary",
+                 "pset"_a
+             )
             .def("Update",
                  &SimpleBoostDecayComponent::Update,
                  "Update (i.e. Decay at decayRate) currentValue for dt",

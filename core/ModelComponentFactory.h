@@ -14,7 +14,7 @@ class ModelComponentFactory
     typedef std::map<std::string, instantiator_function_t> registration_table_t;
 
 public:
-    static ModelComponent* CreateComponent(std::string name, const ParamSet& ps);
+    static ModelComponent* CreateComponent(std::string name, const ParamSet& pset);
 
     static void Register(const std::string& classname, instantiator_function_t _if)
     {
