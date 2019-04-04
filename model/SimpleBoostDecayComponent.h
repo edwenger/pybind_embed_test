@@ -3,8 +3,8 @@
 #include <string>
 #include <vector>
 
-#include "ModelComponent.h"
-#include "ModelComponentFactory.h"
+#include "core/ModelComponent.h"
+#include "core/ModelComponentFactory.h"
 
 
 class SimpleBoostDecayComponent : public ModelComponent

@@ -3,7 +3,7 @@
 #include <string>
 
 #include <pybind11/embed.h>
-#include "model/ModelComponentFactory.h"
+#include "core/ModelComponentFactory.h"
 
 namespace py = pybind11;
 

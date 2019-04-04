@@ -9,7 +9,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(pybind11)
 
+add_subdirectory(core)
+
 add_subdirectory(model)
 
 add_executable(emodRun main.cpp)
-target_link_libraries(emodRun PRIVATE pybind11::embed model)
+target_link_libraries(emodRun PRIVATE pybind11::embed core model)
