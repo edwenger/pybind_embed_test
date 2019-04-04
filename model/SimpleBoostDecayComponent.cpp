@@ -7,12 +7,20 @@
 
 namespace py = pybind11;
 
-SimpleBoostDecayComponent::SimpleBoostDecayComponent(const py::dict &params)
+IMPLEMENT_FACTORY_REGISTERED(SimpleBoostDecayComponent)
+
+SimpleBoostDecayComponent::SimpleBoostDecayComponent()
     : currentValue(0)
-    , boostAmount(params["boostAmount"].cast<float>())
-    , decayRate(params["decayRate"].cast<float>())
+    , boostAmount(0)
+    , decayRate(0)
 {
 
+}
+
+void SimpleBoostDecayComponent::Configure(const py::dict &params)
+{
+    boostAmount = params["boostAmount"].cast<float>();
+    decayRate = params["decayRate"].cast<float>();
 }
 
 void SimpleBoostDecayComponent::Update(float dt)

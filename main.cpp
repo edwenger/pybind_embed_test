@@ -3,7 +3,7 @@
 #include <string>
 
 #include <pybind11/embed.h>
-#include "model/ModelComponent.h"
+#include "model/ModelComponentFactory.h"
 
 namespace py = pybind11;
 
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     py::module calc = py::module::import(module_name.c_str());
     auto params = calc.attr("model_params");
 
-    auto mc = ModelComponent::make("SimpleBoostDecayComponent", params);
+    auto mc = ModelComponentFactory::CreateComponent("SimpleBoostDecayComponent", params);
     mc->Notify("Boost");
     std::cout << "Value after Boost() = " << mc->GetCurrentValue() << std::endl;
     mc->Update(5);
