@@ -3,11 +3,9 @@
 #include <cmath>
 #include <stdexcept>
 
-#include <pybind11/embed.h>
-
-namespace py = pybind11;
 
 IMPLEMENT_FACTORY_REGISTERED(SimpleBoostDecayComponent)
+
 
 SimpleBoostDecayComponent::SimpleBoostDecayComponent()
     : currentValue(0)
@@ -17,10 +15,10 @@ SimpleBoostDecayComponent::SimpleBoostDecayComponent()
 
 }
 
-void SimpleBoostDecayComponent::Configure(const py::dict &params)
+void SimpleBoostDecayComponent::Configure(const ParamSet& ps)
 {
-    boostAmount = params["boostAmount"].cast<float>();
-    decayRate = params["decayRate"].cast<float>();
+    boostAmount = ps["boostAmount"].cast<float>();
+    decayRate = ps["decayRate"].cast<float>();
 }
 
 void SimpleBoostDecayComponent::Update(float dt)

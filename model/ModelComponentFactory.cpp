@@ -2,9 +2,9 @@
 
 #include <exception>
 
-ModelComponent* ModelComponentFactory::CreateComponent(
-    std::string name,
-    const py::dict &params)
+
+ModelComponent*
+ModelComponentFactory::CreateComponent(std::string name, const ParamSet& ps)
 {
   registration_table_t::iterator it;
   it = GetRegistrationTable().find(name);
@@ -12,7 +12,7 @@ ModelComponent* ModelComponentFactory::CreateComponent(
   if (it != GetRegistrationTable().end())
   {
       ModelComponent* obj = (it->second)();
-      obj->Configure(params);
+      obj->Configure(ps);
       return obj;
   }
   else

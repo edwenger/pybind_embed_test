@@ -4,11 +4,9 @@
 #include <map>
 #include <string>
 
-#include <pybind11/embed.h>
-
 #include "ModelComponent.h"
+#include "ParamSet.h"
 
-namespace py = pybind11;
 
 class ModelComponentFactory
 {
@@ -16,11 +14,9 @@ class ModelComponentFactory
     typedef std::map<std::string, instantiator_function_t> registration_table_t;
 
 public:
-    static ModelComponent* CreateComponent(std::string name,
-                                           const py::dict &params);
+    static ModelComponent* CreateComponent(std::string name, const ParamSet& ps);
 
-    static void Register(const std::string& classname,
-                         instantiator_function_t _if)
+    static void Register(const std::string& classname, instantiator_function_t _if)
     {
         GetRegistrationTable()[classname] = _if;
     }
@@ -32,6 +28,7 @@ protected:
         return registration_table;
     }
 };
+
 
 #define DECLARE_FACTORY_REGISTERED(classname) \
     private: \
