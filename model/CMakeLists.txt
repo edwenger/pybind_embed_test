@@ -4,4 +4,4 @@ add_library(model SHARED SimpleBoostDecayComponent.cpp)
 target_include_directories(model PUBLIC ${CMAKE_SOURCE_DIR})
 
 # link library against pybind11
-target_link_libraries(model PRIVATE pybind11::embed)
+target_link_libraries(model PRIVATE pybind11::embed core)

@@ -3,16 +3,20 @@
 #include <string>
 #include <vector>
 
-#include <pybind11/embed.h>
-#include "model/ModelComponent.h"
+#include "core/ModelComponent.h"
+#include "core/ModelComponentFactory.h"
 
-namespace py = pybind11;
 
-class SimpleBoostDecayComponent : public ModelComponent::Registrar<SimpleBoostDecayComponent>
+class SimpleBoostDecayComponent : public ModelComponent
 {
+
+    DECLARE_FACTORY_REGISTERED(SimpleBoostDecayComponent)
+
 public:
-    SimpleBoostDecayComponent(std::vector<int> /*py::dict*/ params);
-    void Update(float dt) override;
+    SimpleBoostDecayComponent();
+
+    void Configure(const ParamSet& pset) override;
+    void Update(float dt=1.0f) override;
     void Notify(const std::string& event) override;
     float GetCurrentValue() const override;
 

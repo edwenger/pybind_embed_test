@@ -1,6 +1,6 @@
-import emod
+""" Our main.cpp will read this module using pybind11 for embedding """
 
-c1 = emod.Cohort(10)
-
-c2 = emod.Cohort(20)
-c2_count = c2.drawFraction(0.5)
+model_params = dict(
+    boostAmount=200,
+    decayRate=0.2
+)
