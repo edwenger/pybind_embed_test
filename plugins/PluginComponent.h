@@ -3,16 +3,13 @@
 #include <string>
 
 #include "core/ModelComponent.h"
-#include "core/ModelComponentFactory.h"
 
 
-class SimpleBoostDecayComponent : public ModelComponent
+class PluginComponent : public ModelComponent
 {
 
-    DECLARE_FACTORY_REGISTERED(SimpleBoostDecayComponent)
-
 public:
-    SimpleBoostDecayComponent();
+    PluginComponent();
 
     void Configure(const ParamSet& pset) override;
     void Update(float dt=1.0f) override;
@@ -20,11 +17,5 @@ public:
     float GetCurrentValue() const override;
 
 protected:
-    void Decay(float dt=1.0f);
-    void Boost();
-
-protected:
     float currentValue;
-    float boostAmount;
-    float decayRate;
 };

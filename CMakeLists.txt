@@ -13,6 +13,8 @@ add_subdirectory(core)
 
 add_subdirectory(model)
 
+add_subdirectory(plugins)
+
 add_executable(emodRun main.cpp)
 target_link_libraries(emodRun PRIVATE pybind11::embed core model)
 

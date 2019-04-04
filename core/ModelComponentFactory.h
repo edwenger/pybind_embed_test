@@ -8,6 +8,9 @@
 #include "ParamSet.h"
 
 
+typedef void factory_register_t();
+
+
 class ModelComponentFactory
 {
     typedef std::function<ModelComponent* ()> instantiator_function_t;
