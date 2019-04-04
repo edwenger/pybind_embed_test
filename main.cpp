@@ -65,5 +65,10 @@ int main(int argc, char** argv) {
 
     std::cout << "Creating " << plugin_name.c_str() << " component..." << std::endl;
     auto mc2 = ModelComponentFactory::CreateComponent(plugin_name, plugin_params);
-
+    for (int i = 0; i < 4; i++)
+    {
+        mc2->Update(i);
+        std::cout << mc2->GetCurrentValue() << "...";
+    }
+    std::cout << "Who do we appreciate? pybind11!" << std::endl;
 }

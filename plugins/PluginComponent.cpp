@@ -14,6 +14,7 @@ void PluginComponent::Configure(const ParamSet& pset)
 
 void PluginComponent::Update(float dt)
 {
+    currentValue += 2;
 }
 
 void PluginComponent::Notify(const std::string& event)
