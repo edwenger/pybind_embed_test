@@ -1,4 +1,4 @@
-#include "SimpleBoostDecayComponent.h"
+#include <model/SimpleBoostDecayComponent.h>
 
 #include <cmath>
 #include <stdexcept>

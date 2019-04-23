@@ -4,8 +4,8 @@
 #include <map>
 #include <string>
 
-#include "ModelComponent.h"
-#include "ParamSet.h"
+#include <core/ModelComponent.h>
+#include <core/ParamSet.h>
 
 
 typedef void factory_register_t();

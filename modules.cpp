@@ -2,9 +2,9 @@
 
 #include <pybind11/pybind11.h>
 
-#include "core/ModelComponent.h"
-#include "core/ModelComponentFactory.h"
-#include "model/SimpleBoostDecayComponent.h"
+#include <core/ModelComponent.h>
+#include <core/ModelComponentFactory.h>
+#include <model/SimpleBoostDecayComponent.h>
 
 namespace py = pybind11;
 using namespace py::literals;

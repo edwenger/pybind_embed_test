@@ -1,6 +1,6 @@
-#include "PluginComponent.h"
+#include <plugins/PluginComponent.h>
 
-#include "core/ModelComponentFactory.h"
+#include <core/ModelComponentFactory.h>
 
 
 PluginComponent::PluginComponent()

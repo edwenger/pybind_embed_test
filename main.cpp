@@ -4,7 +4,7 @@
 
 #include <dlfcn.h>
 #include <pybind11/embed.h>
-#include "core/ModelComponentFactory.h"
+#include <core/ModelComponentFactory.h>
 
 namespace py = pybind11;
 

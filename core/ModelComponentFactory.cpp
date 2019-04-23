@@ -1,4 +1,4 @@
-#include "ModelComponentFactory.h"
+#include <core/ModelComponentFactory.h>
 
 #include <exception>
 

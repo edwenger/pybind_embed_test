@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "core/ModelComponent.h"
+#include <core/ModelComponent.h>
 
 
 class PluginComponent : public ModelComponent

@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "core/ModelComponent.h"
-#include "core/ModelComponentFactory.h"
+#include <core/ModelComponent.h>
+#include <core/ModelComponentFactory.h>
 
 
 class SimpleBoostDecayComponent : public ModelComponent
