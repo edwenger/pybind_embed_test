@@ -3,7 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 
-
+namespace model{
 IMPLEMENT_FACTORY_REGISTERED(SimpleBoostDecayComponent)
 
 
@@ -51,4 +51,5 @@ void SimpleBoostDecayComponent::Decay(float dt)
 void SimpleBoostDecayComponent::Boost()
 {
     currentValue += boostAmount;
+}
 }

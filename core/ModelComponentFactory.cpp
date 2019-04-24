@@ -2,7 +2,7 @@
 
 #include <exception>
 
-
+namespace core {
 ModelComponent*
 ModelComponentFactory::CreateComponent(std::string name, const ParamSet& pset)
 {
@@ -19,4 +19,5 @@ ModelComponentFactory::CreateComponent(std::string name, const ParamSet& pset)
   {
       throw std::invalid_argument("Invalid class!");
   }
+}
 }

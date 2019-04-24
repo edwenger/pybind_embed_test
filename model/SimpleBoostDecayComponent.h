@@ -6,7 +6,8 @@
 #include <core/ModelComponentFactory.h>
 
 
-class SimpleBoostDecayComponent : public ModelComponent
+namespace model {
+class SimpleBoostDecayComponent : public core::ModelComponent
 {
 
     DECLARE_FACTORY_REGISTERED(SimpleBoostDecayComponent)
@@ -28,3 +29,4 @@ protected:
     float boostAmount;
     float decayRate;
 };
+}

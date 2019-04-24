@@ -1,0 +1,11 @@
+#include <map>
+#include <string>
+#include <pybind11/embed.h>
+#include <stdexcept>
+#include <exception>
+#include <core/ParamSet.h>
+#include <model/SimpleBoostDecayComponent.h>
+#include <functional>
+#include <cmath>
+#include <core/ModelComponentFactory.h>
+#include <core/ModelComponent.h>

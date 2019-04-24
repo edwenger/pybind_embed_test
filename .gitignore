@@ -1,2 +1,6 @@
 build
 pybind11
+binder/cmake_bindings
+*.so
+*.dylib
+*.egg-info

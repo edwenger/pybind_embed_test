@@ -7,9 +7,9 @@
 #include <core/ModelComponent.h>
 #include <core/ParamSet.h>
 
+namespace core {
 
 typedef void factory_register_t();
-
 
 class ModelComponentFactory
 {
@@ -31,7 +31,7 @@ protected:
         return registration_table;
     }
 };
-
+}
 
 #define DECLARE_FACTORY_REGISTERED(classname) \
     private: \
@@ -45,7 +45,7 @@ protected:
     };\
     static void in_class_registration_hook()\
     {\
-        ModelComponentFactory::Register(#classname, \
+        core::ModelComponentFactory::Register(#classname, \
             []() { return (ModelComponent*)(new classname()); });\
     }\
     static RegistrationHookCaller registration_hook_caller; \
