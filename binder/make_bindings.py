@@ -1,6 +1,6 @@
 import glob
 import os
-# import sys
+import sys
 import shutil
 import subprocess
 from distutils.sysconfig import get_python_inc
@@ -29,7 +29,9 @@ python_include = get_python_inc()
 bindings_dir = 'cmake_bindings'
 python_module_name = 'test_binder'
 
-# binder_source = f'{os.getcwd()}/../../binder/source'
+# === Compiler settings
+pybind_dir = f'{os.getcwd()}/../../binder/build/pybind11'
+binder_source = f'{os.getcwd()}/../../binder/source'
 
 
 def make_all_includes():
@@ -81,10 +83,62 @@ def make_bindings_code(all_includes_fn):
     return sources_to_compile
 
 
+def compile_sources(sources_to_compile):
+    og_dir = os.getcwd()
+    os.chdir(bindings_dir)
+    lines_to_write = []
+    lines_to_write.append('cmake_minimum_required(VERSION 3.0)')
+    lines_to_write.append(f'project({python_module_name})')
+
+    compiled_sources = []
+    include_directories = []
+    for include_dir in [binder_source, this_project_source,
+                        # gcc_include, gcc_x64_include,
+                        pybind_include, get_python_inc()]:
+        lines_to_write.append(f'include_directories({include_dir})')
+
+    lines_to_write.append('set(CMAKE_CXX_STANDARD 11)')
+    lines_to_write.append('set(CMAKE_CXX_STANDARD_REQUIRED ON)')
+
+    # lines_to_write.append('set_property(GLOBAL PROPERTY POSITION_INDEPENDENT_CODE ON)') # -fPIC
+    # lines_to_write.append('add_definitions(-DNDEBUG)')
+    # lines_to_write.append('add_definitions(-DGCC_INSTALL_PREFIX)')
+
+    # Link against pybind11 (after making local symlink)
+    os.symlink(pybind_dir, 'pybind11')  # we've already chdir into bindings_dir
+    lines_to_write.append('add_subdirectory(pybind11)')
+    lines_to_write.append(f'add_library({python_module_name} SHARED')
+    for source in sources_to_compile:
+        lines_to_write.append(f'\t{source}')
+    lines_to_write.append(')')
+    lines_to_write.append(f'target_link_libraries({python_module_name} PRIVATE pybind11::module)')
+
+    lines_to_write.append(f'set_target_properties({python_module_name} PROPERTIES PREFIX "" SUFFIX ".so")')
+
+    with open('CMakeLists.txt', 'w') as f:
+        for line in lines_to_write:
+            f.write(f'{line}\n')
+
+    # Compile from cmake file
+    subprocess.call('cmake -DCMAKE_C_COMPILER=/usr/local/bin/gcc-8 -DCMAKE_CXX_COMPILER=/usr/local/bin/gcc-8 -G Ninja'.split())
+    subprocess.call('ninja')
+
+    # Test module from compiled .so in local directory
+    sys.path.append('.')
+    if python_module_name == 'test_binder':
+        sys.stdout.flush()
+        print('Testing Python lib...')
+        import test_binder
+        # test_obj = test_struct.testers.test_my_struct()
+        # print(test_obj.an_int)
+        # if use_pybind_stl:
+        #     print(test_obj.a_vector)
+
+
 def main():
     all_includes_fn =  make_all_includes()
     sources_to_compile = make_bindings_code(all_includes_fn)
-    # compile_sources(sources_to_compile)
+    compile_sources(sources_to_compile)
 
 
 if __name__ == '__main__':
