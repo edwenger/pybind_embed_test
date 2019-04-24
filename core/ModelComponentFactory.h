@@ -7,7 +7,8 @@
 #include <core/ModelComponent.h>
 #include <core/ParamSet.h>
 
-namespace core {
+
+namespace dtk {
 
 typedef void factory_register_t();
 
@@ -31,7 +32,9 @@ protected:
         return registration_table;
     }
 };
-}
+
+}  // dtk namespace
+
 
 #define DECLARE_FACTORY_REGISTERED(classname) \
     private: \
@@ -45,7 +48,7 @@ protected:
     };\
     static void in_class_registration_hook()\
     {\
-        core::ModelComponentFactory::Register(#classname, \
+        dtk::ModelComponentFactory::Register(#classname, \
             []() { return (ModelComponent*)(new classname()); });\
     }\
     static RegistrationHookCaller registration_hook_caller; \

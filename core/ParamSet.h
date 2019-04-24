@@ -2,6 +2,6 @@
 
 #include <pybind11/embed.h>
 
-namespace py = pybind11;
-
-typedef py::dict ParamSet;
+namespace dtk {
+    typedef pybind11::dict ParamSet;
+}

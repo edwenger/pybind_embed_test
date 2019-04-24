@@ -6,8 +6,10 @@
 #include <core/ModelComponentFactory.h>
 
 
+namespace dtk {
 namespace model {
-class SimpleBoostDecayComponent : public core::ModelComponent
+
+class SimpleBoostDecayComponent : public ModelComponent
 {
 
     DECLARE_FACTORY_REGISTERED(SimpleBoostDecayComponent)
@@ -29,4 +31,6 @@ protected:
     float boostAmount;
     float decayRate;
 };
-}
+
+}  // dtk::model namespace
+}  // dtk namespace

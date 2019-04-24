@@ -2,7 +2,9 @@
 
 #include <exception>
 
-namespace core {
+
+namespace dtk {
+
 ModelComponent*
 ModelComponentFactory::CreateComponent(std::string name, const ParamSet& pset)
 {
@@ -20,4 +22,5 @@ ModelComponentFactory::CreateComponent(std::string name, const ParamSet& pset)
       throw std::invalid_argument("Invalid class!");
   }
 }
-}
+
+}  // dtk namespace

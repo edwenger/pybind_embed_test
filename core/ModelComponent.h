@@ -3,7 +3,9 @@
 #include <string>
 #include <core/ParamSet.h>
 
-namespace core {
+
+namespace dtk {
+
 struct ModelComponent
 {
     virtual ~ModelComponent() { }
@@ -13,4 +15,5 @@ struct ModelComponent
     virtual void Notify(const std::string& event) = 0;
     virtual float GetCurrentValue() const = 0;
 };
-}
+
+}  // dtk namespace

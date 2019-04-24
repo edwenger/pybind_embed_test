@@ -3,7 +3,10 @@
 #include <cmath>
 #include <stdexcept>
 
-namespace model{
+
+namespace dtk {
+namespace model {
+
 IMPLEMENT_FACTORY_REGISTERED(SimpleBoostDecayComponent)
 
 
@@ -52,4 +55,6 @@ void SimpleBoostDecayComponent::Boost()
 {
     currentValue += boostAmount;
 }
-}
+
+}  // dtk::model namespace
+}  // dtk namespace

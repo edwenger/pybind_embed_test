@@ -28,11 +28,8 @@ python_include = get_python_inc()
 # Binder output settings
 bindings_dir = 'cmake_bindings'
 python_module_name = 'test_binder'
-this_project_namespace_to_bind = ' '.join(include_subdirectories)
 
 # binder_source = f'{os.getcwd()}/../../binder/source'
-# use_pybind_stl = True
-# #use_pybind_stl = False
 
 
 def make_all_includes():
@@ -61,15 +58,19 @@ def make_bindings_code(all_includes_fn):
     os.mkdir(bindings_dir)
     command = (f'{binder_executable} --root-module {python_module_name} '
                f'--prefix {os.getcwd()}/{bindings_dir}/ '
-               f'--bind {this_project_namespace_to_bind} '
-               # + ('--config config.cfg ' if use_pybind_stl else '') +
+               '--config config.cfg '  # for detailed binding instructions
                f' {all_includes_fn} -- -std=c++11 '
+
+               # for Mac
                '-stdlib=libc++ '
                f'-I{gcc_include} '
-               f'-I{pybind_include} '
-               f'-I{python_include} '
                f'-DGCC_INSTALL_PREFIX {gcc_include} '
                f'-I{gcc_x64_include} '
+
+               # for Binder
+               f'-I{pybind_include} '
+               f'-I{python_include} '
+
                f'-I{this_project_source} -DNDEBUG -v').split()
     print(' '.join(command))
     ret = subprocess.call(command)
